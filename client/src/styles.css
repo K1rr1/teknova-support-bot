@@ -1,0 +1,15 @@
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial; }
+.container { max-width: 760px; margin: 0 auto; padding: 24px; }
+.header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.bubble { border-radius: 16px; padding: 12px 14px; margin: 8px 0; line-height: 1.4; }
+.bubble.user { background: rgba(0,0,0,.08); }
+.bubble.bot { background: rgba(0,128,255,.12); }
+.msg { white-space: pre-wrap; }
+.citations { font-size: 12px; opacity: .8; margin-top: 6px; }
+.inputBar { display: flex; gap: 8px; margin-top: 12px; }
+input, textarea, button { font: inherit; }
+textarea { flex: 1; padding: 10px; border-radius: 12px; resize: vertical; min-height: 62px; }
+button { padding: 10px 14px; border-radius: 12px; cursor: pointer; }
+.note { font-size: 12px; opacity: .75; margin-top: 8px; }

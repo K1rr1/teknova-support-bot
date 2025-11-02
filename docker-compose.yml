@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  server:
+    build: ./server
+    ports: [ "5050:5050" ]
+    environment:
+      - PORT=5050
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_ROLE=${SUPABASE_SERVICE_ROLE}
+      - SUPABASE_TABLE=docs
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_CHAT_MODEL=llama3.1
+      - OLLAMA_EMBED_MODEL=nomic-embed-text
+      - USE_SELF_QUERY=false
+    depends_on: [ ollama ]
+  client:
+    build: ./client
+    ports: [ "5173:80" ]
+    environment:
+      - VITE_API_URL=http://localhost:5050
+    depends_on: [ server ]
+  ollama:
+    image: ollama/ollama:latest
+    ports: [ "11434:11434" ]
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+volumes:
+  ollama: {}
